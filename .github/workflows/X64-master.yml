@@ -53,7 +53,7 @@ jobs:
       run: |
           cd openwrt
           rm -f .config
-          cp ../openwrt-config/master.config .config
+          cp ../openwrt-config/x64-master .config
           
     - name: Make Defconfig
       run: |
