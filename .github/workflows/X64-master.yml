@@ -8,12 +8,13 @@
 name: X64-Master
 
 on:
-  schedule:
-    - cron: 0 20 * * *
+#  schedule:
+#    - cron: 0 20 * * *
 #  push:
 #    branches: 
 #      - master
-
+  watch:
+    types: [started]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,7 +40,7 @@ jobs:
       
     - name: Clone Config
       env: 
-        REPO_URL: https://github.com/Lienol/openwrt-actions
+        REPO_URL: https://github.com/wiztex/openwrt-actions
       run: git clone --depth 1 $REPO_URL openwrt-config
       
     - name: Update feeds
@@ -52,7 +53,7 @@ jobs:
       run: |
           cd openwrt
           rm -f .config
-          cp ../openwrt-config/x64-master .config
+          cp ../openwrt-config/master.config .config
           
     - name: Make Defconfig
       run: |
